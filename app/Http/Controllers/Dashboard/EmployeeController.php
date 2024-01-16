@@ -7,6 +7,8 @@ use App\Models\Departement;
 use App\Models\Employee;
 use App\Models\EmployeeStatus;
 use App\Models\Jabatan;
+use App\Models\Notice;
+use App\Models\Score;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +28,18 @@ class EmployeeController extends Controller
         $jabatan = Jabatan::where('status', '=', 1)->get();
         $status = EmployeeStatus::all();
         return view('dashboard.employee.create', ['departement' => $departement, 'jabatan' => $jabatan, 'status' => $status]);
+    }
+
+    public function show(string $id)
+    {
+        try {
+            $notice = Notice::where('id_employee', '=', $id)->with('employee')->get();
+            $scores = Score::where('id_employee', '=', $id)->with('employee')->get();
+            $data = Employee::find($id)->with('department', 'jabatan', 'status')->first();
+            return view('dashboard.employee.show', ['data' => $data, 'notice' => $notice, 'scores' => $scores]);
+        } catch (Throwable $e) {
+            return back()->with('error', 'Something went wrong.');
+        }
     }
 
     public function store(Request $request)

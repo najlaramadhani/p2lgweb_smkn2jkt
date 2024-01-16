@@ -9,15 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    // - id
+    // - id_employee
+    // - month
+    // - score
     public function up(): void
     {
-        Schema::create('notices', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_employee')->unsigned();
-            $table->text('note')->nullable();
-            $table->date('hrd_meet_start');
-            $table->date('hrd_meet_end');
-            $table->string('about');
+            $table->string('month');
+            $table->integer('score');
             $table->timestamps();
 
             $table->foreign('id_employee')->references('id')->on('employees')->onDelete('cascade');
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notices');
+        Schema::dropIfExists('scores');
     }
 };

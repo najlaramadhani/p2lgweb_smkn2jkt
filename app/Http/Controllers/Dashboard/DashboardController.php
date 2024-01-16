@@ -3,63 +3,20 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Departement;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('dashboard.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $tetap = Employee::where('id_status', '=', 1)->count();
+        $percobaan = Employee::where('id_status', '=', 2)->count();
+        $resign = Employee::where('id_status', '=', 3)->count();
+        $wanita = Employee::where('gender', '=', 'Wanita')->count();
+        $pria = Employee::where('gender', '=', 'Pria')->count();
+        $departement = Departement::withCount('employees')->get();
+        return view('dashboard.index', ['tetap' => $tetap, 'percobaan' => $percobaan, 'resign' => $resign, 'wanita' => $wanita, 'pria' => $pria, 'departement' => $departement]);
     }
 }

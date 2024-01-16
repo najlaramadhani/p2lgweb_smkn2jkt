@@ -12,16 +12,16 @@ class Employee extends Model
 
     public function department()
     {
-        return $this->belongsTo(Departement::class, 'id');
+        return $this->belongsTo(Departement::class, 'id_departement');
     }
 
     public function jabatan()
     {
-        return $this->belongsTo(Jabatan::class, 'id');
+        return $this->belongsTo(Jabatan::class, 'id_jabatan');
     }
 
     public function status()
     {
-        return $this->belongsTo(EmployeeStatus::class, 'id');
+        return $this->belongsTo(EmployeeStatus::class, 'id_status');
     }
 }

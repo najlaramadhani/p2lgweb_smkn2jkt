@@ -84,7 +84,7 @@
                                                 <option value="Pria" selected="selected">Pria</option>
                                                 <option value="Wanita">Wanita</option>
                                             @else
-                                                <option value="Wanita selected="selected"">Wanita</option>
+                                                <option value="Wanita" selected>Wanita</option>
                                                 <option value="Pria">Pria</option>
                                             @endif
                                         </select>

@@ -47,7 +47,9 @@
                                 </div>
                                 <div class="inner">
                                     <h5 class="text-center mb-0"><b>Karyawan Wanita</b></h5>
-                                    <p class="text-center mb-0" style="font-size:30px;"><b class="total-women">0</b></p>
+                                    <p class="text-center mb-0" style="font-size:30px;">
+                                        <b class="total-women">{{ $wanita }}</b>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +61,9 @@
                                 </div>
                                 <div class="inner">
                                     <h5 class="text-center mb-0"><b>Karyawan Pria</b></h5>
-                                    <p class="text-center mb-0" style="font-size:30px;"><b class="total-men">0</b></p>
+                                    <p class="text-center mb-0" style="font-size:30px;">
+                                        <b class="total-men">{{ $pria }}</b>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +75,8 @@
                                 </div>
                                 <div class="inner">
                                     <h5 class="text-center mb-0"><b>Departemen</b></h5>
-                                    <p class="text-center mb-0" style="font-size:30px;"><b class="total-department">0</b>
+                                    <p class="text-center mb-0" style="font-size:30px;">
+                                        <b class="total-department">{{ count($departement) }}</b>
                                     </p>
                                 </div>
                             </div>
@@ -104,8 +109,8 @@
     <script src="{{ asset('/plugins/chart.js/Chart.min.js') }}"></script>
     <script type="text/javascript">
         function employee() {
-            const statuses = ["Tetap", "Magang", "Resign"];
-            const employeeCount = [50, 20, 10];
+            const statuses = ["Tetap", "Percobaan", "Resign"];
+            const employeeCount = [{{ $tetap }}, {{ $percobaan }}, {{ $resign }}];
             const colors = ['#36A2EB', '#FFCE56', '#FF6384'];
 
             const ctx = document.getElementById('employeeStatusCanvas').getContext('2d');
@@ -130,9 +135,21 @@
         }
 
         function departement() {
-            var departments = ["Gudang", "Teknisi", "Packing"];
-            var memberCount = [3, 2, 1, 0];
-            var colors = ['#FF5733', '#3399FF', '#FFCE56'];
+            var departments = [
+                @foreach ($departement as $key => $dt)
+                    "{{ $dt->name }}",
+                @endforeach
+            ];
+            var memberCount = [
+                @foreach ($departement as $key => $dt)
+                    "{{ $dt->employees_count }}",
+                @endforeach
+            ];
+            var colors = [
+                @foreach ($departement as $key => $dt)
+                    "{{ $dt->options }}",
+                @endforeach
+            ];
 
             var ctx = document.getElementById('barChart').getContext('2d');
             var myChart = new Chart(ctx, {

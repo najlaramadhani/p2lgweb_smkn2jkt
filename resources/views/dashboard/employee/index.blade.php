@@ -84,7 +84,7 @@
                                                             </button>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item text-success"
-                                                                    href="https://hris.applikasi.cloud/department/info/23">
+                                                                    href="{{ route('dashboard.employee.show', $employee->id) }}">
                                                                     <i class="fas fa-check-circle"></i> Detail
                                                                 </a>
                                                                 <a class="dropdown-item text-primary"

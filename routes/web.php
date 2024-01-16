@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\DepartementController;
 use App\Http\Controllers\Dashboard\EmployeeController;
 use App\Http\Controllers\Dashboard\JabatanController;
 use App\Http\Controllers\Dashboard\NoticeController;
+use App\Http\Controllers\Dashboard\ScoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::prefix('/employee')->middleware(['auth'])->group(function () {
         Route::get('/', [EmployeeController::class, 'index'])->name('dashboard.employee.index');
+        Route::get('/show/{id}', [EmployeeController::class, 'show'])->name('dashboard.employee.show');
         Route::get('/create', [EmployeeController::class, 'create'])->name('dashboard.employee.create');
         Route::post('/store', [EmployeeController::class, 'store'])->name('dashboard.employee.store');
         Route::get('/{id}', [EmployeeController::class, 'edit'])->name('dashboard.employee.edit');
@@ -72,5 +74,13 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
         Route::get('/{id}', [NoticeController::class, 'edit'])->name('dashboard.notice.edit');
         Route::post('/update/{id}', [NoticeController::class, 'update'])->name('dashboard.notice.update');
         Route::get('/del/{id}', [NoticeController::class, 'destroy'])->name('dashboard.notice.destroy');
+    });
+
+    Route::prefix('/score')->middleware(['auth'])->group(function () {
+        Route::get('/', [ScoreController::class, 'index'])->name('dashboard.score.index');
+        Route::get('/user/{id}', [ScoreController::class, 'user'])->name('dashboard.score.user');
+        Route::get('/month/{slug}', [ScoreController::class, 'month'])->name('dashboard.score.month');
+        Route::post('/store', [ScoreController::class, 'store'])->name('dashboard.score.store');
+        Route::get('/del/{id}', [ScoreController::class, 'destroy'])->name('dashboard.score.destroy');
     });
 });

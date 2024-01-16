@@ -168,6 +168,10 @@
             transition: opacity .2s ease-in-out;
         }
 
+        .btn-secondary {
+            text-transform: uppercase !important;
+        }
+
         .profilepic__content {
             position: absolute;
             top: 0;
@@ -502,6 +506,13 @@
                                         <p>Surat Peringatan</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('dashboard.score.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Penilaian Kinerja</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-header">Department</li>
@@ -528,10 +539,10 @@
                         </li>
                         <li class="nav-header">Pengaturan</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('dashboard.logout') }}" class="nav-link">
                                 <img src="{{ asset('/dist/img/akun.png') }}" height="24px" width="24px"
                                     class="mr-2">
-                                <p>Akun</p>
+                                <p>Sign Out</p>
                             </a>
                         </li>
                     </ul>
