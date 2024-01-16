@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('jabatans', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

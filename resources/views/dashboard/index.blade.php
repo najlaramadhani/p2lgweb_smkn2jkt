@@ -11,7 +11,7 @@
                             <h1 class="m-0 text-bold">Selamat Datang, {{ Auth::user()->username }}</h1>
                         @endauth
                         <div class="btn float-right" style="height: 50px;">
-                            <a href="https://hris.applikasi.cloud/home/announcement" class="btn btn-danger btn-sm">
+                            <a href="#" class="btn btn-danger btn-sm">
                                 <i class="fas fa-bullhorn"></i>
                                 <span class="d-none d-md-inline white-space-no-wrap"
                                     style="font-family:Source Sans Pro"><b>Pengumuman</b></span>
@@ -42,8 +42,8 @@
                         <div class="col-sm-4">
                             <div class="small-box bg-female pt-3 pb-3">
                                 <div class="text-center">
-                                    <img src="https://hris.applikasi.cloud/assets/dist/img/female.png" height="45px"
-                                        width="45px" class="mt-3">
+                                    <img src="{{ asset('/dist/img/female.png') }}" height="45px" width="45px"
+                                        class="mt-3">
                                 </div>
                                 <div class="inner">
                                     <h5 class="text-center mb-0"><b>Karyawan Wanita</b></h5>
@@ -54,8 +54,8 @@
                         <div class="col-sm-4">
                             <div class="small-box bg-male pt-3 pb-3">
                                 <div class="text-center">
-                                    <img src="https://hris.applikasi.cloud/assets/dist/img/male.png" height="45px"
-                                        width="45px" class="mt-3">
+                                    <img src="{{ asset('/dist/img/male.png') }}" height="45px" width="45px"
+                                        class="mt-3">
                                 </div>
                                 <div class="inner">
                                     <h5 class="text-center mb-0"><b>Karyawan Pria</b></h5>
@@ -66,8 +66,8 @@
                         <div class="col-sm-4">
                             <div class="small-box bg-department pt-3 pb-3">
                                 <div class="text-center">
-                                    <img src="https://hris.applikasi.cloud/assets/dist/img/department.png" height="45px"
-                                        width="45px" class="mt-3">
+                                    <img src="{{ asset('/dist/img/department.png') }}" height="45px" width="45px"
+                                        class="mt-3">
                                 </div>
                                 <div class="inner">
                                     <h5 class="text-center mb-0"><b>Departemen</b></h5>

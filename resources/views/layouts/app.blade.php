@@ -110,6 +110,10 @@
             color: #ffffff;
         }
 
+        .nc-green {
+            color: #ADE792;
+        }
+
         .btn-green-pretty,
         .btn-green-pretty:hover {
             background-color: rgba(173, 231, 146, 0.3);
@@ -382,10 +386,10 @@
 
 <body class="hold-transition sidebar-collapse">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light pt-1 pb-1"
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light pt-1 pb-1 fixed-top"
             style="z-index: 1039; margin-left: 0;">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item" id="isSidebar">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
@@ -429,15 +433,15 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-header"><span class="total"></span> Notifications</span>
                         <div class="dropdown-divider"></div>
-                        <a href="https://hris.applikasi.cloud/notification/announcement" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                             <i class="fas fa-envelope mr-2"></i> <span class="announcement"></span> new messages
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="https://hris.applikasi.cloud/notification/work-permit" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                             <i class="fas fa-users mr-2"></i> <span class="work_permit"></span> izin kerja
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="https://hris.applikasi.cloud/notification/request" class="dropdown-item">
+                        <a href="#" class="dropdown-item">
                             <i class="fas fa-file mr-2"></i> <span class="request"></span> new request
                         </a>
                         <div class="dropdown-divider"></div>
@@ -447,21 +451,15 @@
                 <li class="nav-item dropdown">
                     <div class="user-panel mt-1 pb-1 mb-1 d-flex">
                         <div class="image">
-                            <a href="https://hris.applikasi.cloud/account"><img
-                                    src="https://hris.applikasi.cloud/uploads/jml.jpeg" class="img-circle elevation-1"
-                                    alt="Administrator Image"></a>
+                            <a href="#"><img src="https://hris.applikasi.cloud/uploads/jml.jpeg"
+                                    class="img-circle elevation-1" alt="Administrator Image"></a>
                         </div>
                     </div>
                 </li>
             </ul>
         </nav>
-        <aside class="main-sidebar sidebar-light-green">
-            <a href="#" class="brand-link d-flex align-items-center" style="border-bottom:unset">
-                <img src="https://hris.applikasi.cloud/assets/dist/img/EKLogo.png" height="40px" width="40px"
-                    alt="Enter Komputer Logo" class="ml-1 mr-2 brand-image img-circle">
-                <span class="align-self-center m-0 ml-1" style="color:#ADE792"><strong>HRIS</strong></span>
-            </a>
 
+        <aside class="main-sidebar sidebar-light-green mt-1">
             <div class="sidebar">
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -469,16 +467,16 @@
                         <li class="nav-header">Dashboard</li>
                         <li class="nav-item">
                             <a href="{{ route('dashboard.index') }}" class="nav-link">
-                                <img src="https://hris.applikasi.cloud/assets/dist/img/layouts.png" height="24px"
-                                    width="24px" class="mr-2">
+                                <img src="{{ asset('/dist/img/layouts.png') }}" height="24px" width="24px"
+                                    class="mr-2">
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-header">Karyawan</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <img src="https://hris.applikasi.cloud/assets/dist/img/karyawan.png" height="24px"
-                                    width="24px" class="mr-2">
+                                <img src="{{ asset('/dist/img/karyawan.png') }}" height="24px" width="24px"
+                                    class="mr-2">
                                 <p>Karyawan <i class="fas fa-angle-left right"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -493,14 +491,13 @@
                         <li class="nav-header">Dokumen</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <img src="https://hris.applikasi.cloud/assets/dist/img/aplikasi.png" height="24px"
-                                    width="24px" class="mr-2">
+                                <img src="{{ asset('/dist/img/aplikasi.png') }}" height="24px" width="24px"
+                                    class="mr-2">
                                 <p>Aplikasi <i class="fas fa-angle-left right"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="https://hris.applikasi.cloud/application/warning-letter"
-                                        class="nav-link">
+                                    <a href="{{ route('dashboard.notice.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Surat Peringatan</p>
                                     </a>
@@ -510,8 +507,8 @@
                         <li class="nav-header">Department</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <img src="https://hris.applikasi.cloud/assets/dist/img/department.png" height="24px"
-                                    width="24px" class="mr-2">
+                                <img src="{{ asset('/dist/img/department.png') }}" height="24px" width="24px"
+                                    class="mr-2">
                                 <p>Departemen <i class="fas fa-angle-left right"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -522,7 +519,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://hris.applikasi.cloud/department/position" class="nav-link">
+                                    <a href="{{ route('dashboard.jabatan.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Jabatan</p>
                                     </a>
@@ -531,9 +528,9 @@
                         </li>
                         <li class="nav-header">Pengaturan</li>
                         <li class="nav-item">
-                            <a href="https://hris.applikasi.cloud/account" class="nav-link">
-                                <img src="https://hris.applikasi.cloud/assets/dist/img/akun.png" height="24px"
-                                    width="24px" class="mr-2">
+                            <a href="#" class="nav-link">
+                                <img src="{{ asset('/dist/img/akun.png') }}" height="24px" width="24px"
+                                    class="mr-2">
                                 <p>Akun</p>
                             </a>
                         </li>
@@ -541,7 +538,7 @@
                 </nav>
             </div>
         </aside>
-        <div class="content-wrapper">
+        <div class="content-wrapper mt-5">
             @yield('content')
         </div>
     </div>
@@ -550,6 +547,22 @@
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
     <script src="{{ asset('/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript">
+        const statusSide = localStorage.getItem('sidebar');
+        if (statusSide == 'show') {
+            $("body").addClass("sidebar-collapse");
+        } else {
+            $("body").removeClass("sidebar-collapse");
+        }
+
+        $("#isSidebar").click(function() {
+            if (statusSide == 'show') {
+                localStorage.setItem('sidebar', 'hide');
+            } else {
+                localStorage.setItem('sidebar', 'show');
+            }
+        });
+    </script>
     @yield('javascript')
 
     @if (Session::has('success'))

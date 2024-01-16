@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Departement')
+@section('page', 'Jabatan')
 
 @section('content')
     <style type="text/css">
@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm">
-                    <h1 class="text-bold">DATA <small>Departemen</small></h1>
+                    <h1 class="text-bold">DATA <small>Jabatan</small></h1>
                 </div>
             </div>
         </div>
@@ -24,39 +24,25 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tambah Data <small>Departemen</small></h3>
+                            <h3 class="card-title text-center">Tambah Data <small>Jabatan</small></h3>
                         </div>
 
-                        <form id="quickForm" method="POST" action="{{ route('dashboard.departement.store') }}"
+                        <form id="quickForm" method="POST" action="{{ route('dashboard.jabatan.store') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Kode Departemen :</label>
+                                    <label class="col-sm-2 col-form-label">Nama Jabatan :</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="code" id="code" value=""
-                                            class="form-control" placeholder="Masukkan Kode Departemen">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nama Departemen :</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="name" id="department" value=""
-                                            class="form-control" placeholder="Masukkan Nama Departemen">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Warna Departemen :</label>
-                                    <div class="col-sm-10">
-                                        <input type="color" class="form-control form-control-color p-2 pt-0"
-                                            name="options" value="#563d7c" title="Choose your color">
+                                        <input type="text" name="name" id="name" value=""
+                                            class="form-control" placeholder="Masukkan Nama Jabatan">
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer text-right">
-                                <a href="{{ route('dashboard.departement.index') }}" type="button"
+                                <a href="{{ route('dashboard.jabatan.index') }}" type="button"
                                     class="btn btn-secondary">Batal</a>
-                                <button type="submit" name="departmentAdd" value="department-add"
+                                <button type="submit" name="jabatanAdd" value="jabatan-add"
                                     class="btn bg-btn text-dark">Simpan</button>
                             </div>
                         </form>
@@ -66,7 +52,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tabel <small>Departemen</small></h3>
+                            <h3 class="card-title text-center">Tabel <small>Jabatan</small></h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -75,9 +61,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col" width="8%">Kode</th>
-                                            <th scope="col" width="8%">Warna</th>
-                                            <th scope="col">Departemen</th>
+                                            <th scope="col">Jabatan</th>
                                             <th scope="col" width="12%">Karyawan</th>
                                             <th scope="col">Opsi</th>
                                         </tr>
@@ -85,20 +69,14 @@
                                     <tbody>
                                         @if (count($data) < 1)
                                             <tr>
-                                                <td colspan="6" class="dataTables_empty">Loading...</td>
+                                                <td colspan="4" class="dataTables_empty">Loading...</td>
                                             </tr>
                                         @else
-                                            @foreach ($data as $key => $departement)
+                                            @foreach ($data as $key => $jabatan)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $departement->code }}</td>
-                                                    <td>
-                                                        <div
-                                                            style="background-color: {{ $departement->options }};width: 80px;height: 20px;border-radius: 5px;">
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ $departement->name }}</td>
-                                                    <td class="text-center">{{ $departement->employees_count }}</td>
+                                                    <td>{{ $jabatan->name }}</td>
+                                                    <td class="text-center">{{ $jabatan->employees_count }}</td>
                                                     <td class=" align-middle user-select-all p-1">
                                                         <div class="btn-group dropleft user-select-none">
                                                             <button type="button"
@@ -109,16 +87,16 @@
                                                             </button>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item text-success"
-                                                                    href="{{ route('dashboard.departement.show', $departement->id) }}">
+                                                                    href="{{ route('dashboard.jabatan.show', $jabatan->id) }}">
                                                                     <i class="fas fa-check-circle"></i> Detail
                                                                 </a>
                                                                 <a class="dropdown-item text-primary"
-                                                                    href="{{ route('dashboard.departement.edit', $departement->id) }}">
+                                                                    href="{{ route('dashboard.jabatan.edit', $jabatan->id) }}">
                                                                     <i class="fas fa-edit"></i> Ubah Data
                                                                 </a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item text-danger delete-department"
-                                                                    href="{{ route('dashboard.departement.destroy', $departement->id) }}"
+                                                                    href="{{ route('dashboard.jabatan.destroy', $jabatan->id) }}"
                                                                     data-id="23" data-title="Cleaning Service">
                                                                     <i class="fas fa-trash"></i> Hapus Data
                                                                 </a>

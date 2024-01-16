@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departement extends Model
+class EmployeeStatus extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
     public function employees()
     {
-        return $this->hasMany(Employee::class, 'id_departement');
+        return $this->hasMany(Employee::class, 'id_status');
     }
 }

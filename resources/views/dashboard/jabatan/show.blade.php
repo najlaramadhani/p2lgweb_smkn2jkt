@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('page', 'Employee')
+@section('page', 'Jabatan Detail')
 
 @section('content')
     <style type="text/css">
@@ -12,17 +12,7 @@
             <div class="row mb-2">
                 <div class="col-sm">
                     <div class="d-flex justify-content-between">
-                        <h1 class="text-bold">DATA <small>Karyawan</small></h1>
-                        <div class="btn float-right" style="height: 50px;">
-                            <button type="button" onclick="table2xls()" class="btn bg-btn btn-sm px-3 py-2 text-dark">
-                                <i class="fas fa-file-excel px-2"></i> Export
-                            </button>
-                            <a href="{{ route('dashboard.employee.create') }}"
-                                class="btn bg-btn btn-sm px-3 py-2 text-dark">
-                                <i class="fas fa-plus-circle px-2"></i>
-                                <span class="d-none d-md-inline white-space-no-wrap">Tambah Data Karyawan</span>
-                            </a>
-                        </div>
+                        <h1 class="text-bold">DATA <small>Karyawan {{ $jabatan->name }}</small></h1>
                     </div>
                 </div>
             </div>
@@ -57,7 +47,7 @@
                                     <tbody>
                                         @if (count($data) < 1)
                                             <tr>
-                                                <td colspan="9" class="dataTables_empty">Loading...</td>
+                                                <td colspan="6" class="dataTables_empty">Loading...</td>
                                             </tr>
                                         @else
                                             @foreach ($data as $key => $employee)
@@ -115,20 +105,4 @@
 @endsection
 
 @section('javascript')
-    <script type="text/javascript">
-        function table2xls() {
-            var table = document.getElementById("employeeTable");
-            var html = table.outerHTML;
-            var blob = new Blob([html], {
-                type: 'application/vnd.ms-excel'
-            });
-
-            var a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "table.xls";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-    </script>
 @endsection
