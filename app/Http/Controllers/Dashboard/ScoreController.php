@@ -17,7 +17,7 @@ class ScoreController extends Controller
 {
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::with('jabatan', 'department')->get();
         $data = Score::with('employee')->get();
         return view('dashboard.application.score.index', ['data' => $data, 'employees' => $employees]);
     }

@@ -9,6 +9,7 @@ use App\Models\EmployeeStatus;
 use App\Models\Jabatan;
 use App\Models\Notice;
 use App\Models\Score;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
@@ -58,16 +59,22 @@ class EmployeeController extends Controller
             'id_jabatan' => 'required',
             'id_status' => 'required',
             'telp' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
             'address' => 'required',
             'citizen' => 'required',
             'city' => 'required',
             'blood_group' => 'required',
-            'married' => 'required'
+            'married' => 'required',
+            'password' => 'required|confirmed'
         ]);
 
         if ($validator->fails()) {
             return back()->with('error', $validator->messages()->all()[0]);
+        }
+
+        $check = User::where('username', '=', $request->email)->count();
+        if ($check > 0) {
+            return back()->with('error', 'Email already use.');
         }
 
         $data = [
@@ -92,9 +99,24 @@ class EmployeeController extends Controller
             'married' => $request->married,
         ];
 
-        if (Employee::create($data)) {
-            return redirect()->route('dashboard.employee.index')->with('success', 'Create data success.');
-        } else {
+        try {
+            $namaJabatan = Jabatan::find($request->id_jabatan)->name;
+
+            $dataUser = [
+                "fullname" => $request->fullname,
+                "username" => $request->email,
+                "password" => bcrypt($request->password),
+                "image" => "",
+                "role" => strtolower($namaJabatan),
+                "id_jabatan" => $request->id_jabatan
+            ];
+
+            if (Employee::create($data) && User::create($dataUser)) {
+                return redirect()->route('dashboard.employee.index')->with('success', 'Create data success.');
+            } else {
+                return back()->with('error', 'Something wrong when create data.');
+            }
+        } catch (Throwable $e) {
             return back()->with('error', 'Something wrong when create data.');
         }
     }
@@ -134,7 +156,7 @@ class EmployeeController extends Controller
             'citizen' => 'required',
             'city' => 'required',
             'blood_group' => 'required',
-            'married' => 'required'
+            'married' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -175,6 +197,24 @@ class EmployeeController extends Controller
         if ($uidCheck->count() > 0) {
             if ($uidCheck->first()->id != $id) {
                 return back()->with('error', 'This Card ID already used.');
+            }
+        }
+
+        if (strlen($request->password) > 0) {
+            $passed = Validator::make($request->all(), [
+                'password' => 'required|confirmed'
+            ]);
+
+            if ($passed->fails()) {
+                return back()->with('error', $passed->messages()->all()[0]);
+            }
+
+            $user = User::where('username', '=', $request->email)->first();
+            if ($user) {
+                $password = bcrypt($request->password);
+                $user->update([
+                    'password' => $password,
+                ]);
             }
         }
 

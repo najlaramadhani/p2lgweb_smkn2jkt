@@ -178,6 +178,23 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Password : </label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password" value="" class="form-control"
+                                            id="password" placeholder="Masukkan Password Baru">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Konfirmasi Password : </label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password_confirmation" value=""
+                                            class="form-control" id="password_confirmation"
+                                            placeholder="Konfirmasi Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Alamat :</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="address" value="{{ $data->address }}"

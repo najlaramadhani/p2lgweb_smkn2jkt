@@ -17,34 +17,74 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // - Fullname
-        // - Username
-        // - Password
-        // - Profile
-        // - Role
+        Jabatan::create([
+            "name" => "Owner",
+            "status" => 1
+        ]);
 
-        User::create([
-            "fullname" => "Administrator",
-            "username" => "administrator",
-            "password" => bcrypt("administrator123"),
-            "image" => "",
-            "role" => "administrator"
+        Jabatan::create([
+            "name" => "Director",
+            "status" => 1
+        ]);
+
+        Jabatan::create([
+            "name" => "Manager",
+            "status" => 1
+        ]);
+
+        Jabatan::create([
+            "name" => "Supervisor",
+            "status" => 1
+        ]);
+
+        Jabatan::create([
+            "name" => "Staff",
+            "status" => 1
         ]);
 
         User::create([
-            "fullname" => "Operator",
-            "username" => "operator",
-            "password" => bcrypt("operator123"),
+            "fullname" => "Owner",
+            "username" => "owner",
+            "password" => bcrypt("owner123"),
             "image" => "",
-            "role" => "operator"
+            "role" => "owner",
+            "id_jabatan" => 1
         ]);
 
         User::create([
-            "fullname" => "Visitor",
-            "username" => "visitor",
-            "password" => bcrypt("visitor123"),
+            "fullname" => "Director",
+            "username" => "director",
+            "password" => bcrypt("director123"),
             "image" => "",
-            "role" => "visitor123"
+            "role" => "director",
+            "id_jabatan" => 2
+        ]);
+
+        User::create([
+            "fullname" => "Manager",
+            "username" => "manager",
+            "password" => bcrypt("manager123"),
+            "image" => "",
+            "role" => "manager",
+            "id_jabatan" => 3
+        ]);
+
+        User::create([
+            "fullname" => "Supervisor",
+            "username" => "supervisor",
+            "password" => bcrypt("supervisor123"),
+            "image" => "",
+            "role" => "supervisor",
+            "id_jabatan" => 4
+        ]);
+
+        User::create([
+            "fullname" => "Staff",
+            "username" => "staff",
+            "password" => bcrypt("staff123"),
+            "image" => "",
+            "role" => "staff",
+            "id_jabatan" => 5
         ]);
 
         EmployeeStatus::create([
@@ -170,31 +210,6 @@ class DatabaseSeeder extends Seeder
             "name" => "Customer Service",
             "status" => 1,
             "options" => "#FFFFF"
-        ]);
-
-        Jabatan::create([
-            "name" => "Owner",
-            "status" => 1
-        ]);
-
-        Jabatan::create([
-            "name" => "Director",
-            "status" => 1
-        ]);
-
-        Jabatan::create([
-            "name" => "Manager",
-            "status" => 1
-        ]);
-
-        Jabatan::create([
-            "name" => "Supervisor",
-            "status" => 1
-        ]);
-
-        Jabatan::create([
-            "name" => "Staff",
-            "status" => 1
         ]);
     }
 }

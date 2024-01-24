@@ -24,7 +24,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">NIK :</label>
+                                    <label class="col-sm-2 col-form-label">NIK : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="nik" id="nik" value=""
                                             class="form-control" placeholder="Masukkan NIK">
@@ -32,7 +32,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Kartu ID :</label>
+                                    <label class="col-sm-2 col-form-label">Kartu ID : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="uid" id="uid" value=""
                                             class="form-control" placeholder="Masukkan Nomer ID Card">
@@ -40,7 +40,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nama Lengkap :</label>
+                                    <label class="col-sm-2 col-form-label">Nama Lengkap : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="fullname" id="fullname" value=""
                                             class="form-control" placeholder="Masukkan Nama Lengkap">
@@ -48,7 +49,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nama Panggilan :</label>
+                                    <label class="col-sm-2 col-form-label">Nama Panggilan : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="nickname" id="nickname" value=""
                                             class="form-control" placeholder="Masukkan Nama Panggilan">
@@ -56,7 +58,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Tempat, Tanggal Lahir :</label>
+                                    <label class="col-sm-2 col-form-label">Tempat, Tgl Lahir : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-4">
                                         <input type="text" name="place_of_birth" id="place_of_birth" value=""
                                             class="form-control" placeholder="Masukkan Tempat">
@@ -76,7 +79,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Jenis Kelamin :</label>
+                                    <label class="col-sm-2 col-form-label">Jenis Kelamin : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="gender" class="form-control" id="gender">
                                             <option value="Pria" selected="selected">Pria</option>
@@ -86,7 +90,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Agama :</label>
+                                    <label class="col-sm-2 col-form-label">Agama : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="religion" class="form-control" id="religion">
                                             <option value="Islam" selected="selected">Islam</option>
@@ -100,7 +104,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Tanggal Masuk :</label>
+                                    <label class="col-sm-2 col-form-label">Tanggal Masuk : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <div class="input-group date" id="dateEntryEmployee" data-target-input="nearest">
                                             <input type="date" name="tgl_masuk" value=""
@@ -115,7 +120,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Departemen :</label>
+                                    <label class="col-sm-2 col-form-label">Departemen : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="id_departement" class="form-control" id="id_departement">
                                             @foreach ($departement as $key => $dp)
@@ -125,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Jabatan :</label>
+                                    <label class="col-sm-2 col-form-label">Jabatan : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="id_jabatan" class="form-control" id="id_jabatan">
                                             @foreach ($jabatan as $key => $jb)
@@ -135,7 +141,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Status :</label>
+                                    <label class="col-sm-2 col-form-label">Status : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="id_status" class="form-control" id="id_status">
                                             @foreach ($status as $key => $st)
@@ -146,7 +152,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">No.Telepon :</label>
+                                    <label class="col-sm-2 col-form-label">No.Telepon : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="telp" value="" class="form-control"
                                             id="telp" placeholder="Masukkan No.Telepon">
@@ -154,7 +161,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Email :</label>
+                                    <label class="col-sm-2 col-form-label">Email : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="email" name="email" value="" class="form-control"
                                             id="email" placeholder="Masukkan Email">
@@ -162,7 +169,25 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Alamat :</label>
+                                    <label class="col-sm-2 col-form-label">Password : <i class="text-danger">*</i></label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password" value="" class="form-control"
+                                            id="password" placeholder="Masukkan Password Baru">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Konfirmasi Password : <i
+                                            class="text-danger">*</i></label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password_confirmation" value=""
+                                            class="form-control" id="password_confirmation"
+                                            placeholder="Konfirmasi Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Alamat : <i class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="address" value="" class="form-control"
                                             id="address" placeholder="Masukkan Alamat">
@@ -170,7 +195,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Kewarganegaraan :</label>
+                                    <label class="col-sm-2 col-form-label">Kewarganegaraan : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="citizen" class="form-control" id="citizen">
                                             <option value="WNI ">WNI</option>
@@ -180,7 +206,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Kota Asal :</label>
+                                    <label class="col-sm-2 col-form-label">Kota Asal : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <input type="text" name="city" value="" class="form-control"
                                             id="city" placeholder="Masukkan Kota Asal">
@@ -188,7 +215,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Gol.Darah :</label>
+                                    <label class="col-sm-2 col-form-label">Gol.Darah : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="blood_group" class="form-control" id="blood_group">
                                             <option value="A" selected="selected">A</option>
@@ -200,7 +228,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Status Menikah :</label>
+                                    <label class="col-sm-2 col-form-label">Status Menikah : <i
+                                            class="text-danger">*</i></label>
                                     <div class="col-sm-10">
                                         <select name="married" class="form-control" id="married">
                                             <option value="0" selected="selected">Belum Menikah</option>

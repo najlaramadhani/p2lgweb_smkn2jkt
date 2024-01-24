@@ -36,7 +36,7 @@
                 <img src="{{ asset('/dist/img/EKLogo.png') }}" height="150px" width="150px" alt="RMA Logo">
             </div>
             <div class="card-body pt-2">
-                <p class="login-box-msg" style="padding: 0 20px 15px">Masuk Akun HRIS Enter Komputer</p>
+                <p class="login-box-msg" style="padding: 0 20px 15px">LOGIN ACCOUNT PEKINKA</p>
                 <form method="POST" action="{{ route('login.handler') }}">
                     @csrf
                     <div class="input-group mb-3">

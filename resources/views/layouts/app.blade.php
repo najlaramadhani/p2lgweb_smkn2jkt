@@ -403,7 +403,7 @@
                 <img src="{{ asset('/dist/img/EKLogo.png') }}" height="40px" width="40px" alt="Enter Komputer Logo"
                     class="ml-1 mr-1 brand-image img-circle">
                 <span class="align-self-center m-0 ml-1"
-                    style="color:#00aa13; font-size:30px;"><strong>HRIS</strong></span>
+                    style="color:#00aa13; font-size:30px;"><strong>PEKINKA</strong></span>
             </a>
 
             <ul class="navbar-nav ml-auto">
@@ -476,22 +476,25 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-header">Karyawan</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <img src="{{ asset('/dist/img/karyawan.png') }}" height="24px" width="24px"
-                                    class="mr-2">
-                                <p>Karyawan <i class="fas fa-angle-left right"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('dashboard.employee.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Data Karyawan</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (Auth::user()->role == 'manager' || Auth::user()->role == 'director')
+                            <li class="nav-header">Karyawan</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <img src="{{ asset('/dist/img/karyawan.png') }}" height="24px" width="24px"
+                                        class="mr-2">
+                                    <p>Karyawan <i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('dashboard.employee.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Data Karyawan</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+
                         <li class="nav-header">Dokumen</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -500,12 +503,14 @@
                                 <p>Aplikasi <i class="fas fa-angle-left right"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('dashboard.notice.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Surat Peringatan</p>
-                                    </a>
-                                </li>
+                                @if (Auth::user()->role == 'manager' || Auth::user()->role == 'director')
+                                    <li class="nav-item">
+                                        <a href="{{ route('dashboard.notice.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Surat Peringatan</p>
+                                        </a>
+                                    </li>
+                                @endif
 
                                 <li class="nav-item">
                                     <a href="{{ route('dashboard.score.index') }}" class="nav-link">
@@ -515,28 +520,30 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-header">Department</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <img src="{{ asset('/dist/img/department.png') }}" height="24px" width="24px"
-                                    class="mr-2">
-                                <p>Departemen <i class="fas fa-angle-left right"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('dashboard.departement.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Department</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('dashboard.jabatan.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Jabatan</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        @if (Auth::user()->role == 'manager' || Auth::user()->role == 'director')
+                            <li class="nav-header">Department</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <img src="{{ asset('/dist/img/department.png') }}" height="24px" width="24px"
+                                        class="mr-2">
+                                    <p>Departemen <i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('dashboard.departement.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Department</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('dashboard.jabatan.index') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Jabatan</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                         <li class="nav-header">Pengaturan</li>
                         <li class="nav-item">
                             <a href="{{ route('dashboard.logout') }}" class="nav-link">

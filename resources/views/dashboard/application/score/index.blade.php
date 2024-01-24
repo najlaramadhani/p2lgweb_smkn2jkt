@@ -137,7 +137,10 @@
                             <select name="id_employee" class="form-control" id="id_employee">
                                 <option value="0" selected="selected">--Pilih--</option>
                                 @foreach ($employees as $key => $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
+                                    <option value="{{ $employee->id }}">
+                                        {{ $employee->jabatan->name }} | {{ $employee->department->name }} |
+                                        {{ $employee->fullname }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

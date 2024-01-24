@@ -24,8 +24,11 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('role');
+            $table->bigInteger('id_jabatan')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('id_jabatan')->references('id')->on('jabatans')->onDelete('cascade');
         });
     }
 

@@ -31,7 +31,7 @@ class NoticeSender extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Surat Peringatan | HRIS',
+            subject: 'Surat Peringatan | PEKINKA',
         );
     }
 
