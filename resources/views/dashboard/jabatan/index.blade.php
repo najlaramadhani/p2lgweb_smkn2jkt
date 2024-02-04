@@ -24,7 +24,7 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tambah Data <small>Jabatan</small></h3>
+                            <h3 class="card-title text-center text-color">Tambah Data <small>Jabatan</small></h3>
                         </div>
 
                         <form id="quickForm" method="POST" action="{{ route('dashboard.jabatan.store') }}"
@@ -43,7 +43,7 @@
                                 <a href="{{ route('dashboard.jabatan.index') }}" type="button"
                                     class="btn btn-secondary">Batal</a>
                                 <button type="submit" name="jabatanAdd" value="jabatan-add"
-                                    class="btn bg-btn text-dark">Simpan</button>
+                                    class="btn bg-btn text-color">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -52,7 +52,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tabel <small>Jabatan</small></h3>
+                            <h3 class="card-title text-center text-color">Tabel <small>Jabatan</small></h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

@@ -17,7 +17,7 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Edit Data <small>Karyawan</small></h3>
+                            <h3 class="card-title text-center text-color">Edit Data <small>Karyawan</small></h3>
                         </div>
                         <form id="quickForm" action="{{ route('dashboard.employee.update', $data->id) }}" method="POST"
                             enctype="multipart/form-data">
@@ -253,9 +253,9 @@
                             </div>
                             <div class="card-footer text-right">
                                 <a href="{{ route('dashboard.employee.index') }}" type="button"
-                                    class="btn btn-secondary px-5">Batal</a>
+                                    class="btn btn-secondary px-5 text-color">Batal</a>
                                 <button type="submit" name="employeeAdd" value="employee-add"
-                                    class="btn bg-btn text-dark px-5">Simpan</button>
+                                    class="btn bg-btn text-color px-5">Simpan</button>
                             </div>
                         </form>
                     </div>

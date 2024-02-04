@@ -14,7 +14,7 @@
                     <div class="d-flex justify-content-between">
                         <h1 class="text-bold">SURAT <small>Peringatan</small></h1>
                         <div class="btn float-right" style="height: 50px;">
-                            <a href="" class="btn bg-btn btn-sm text-dark" data-toggle="modal"
+                            <a href="" class="btn bg-btn btn-sm text-color" data-toggle="modal"
                                 data-target="#warningletter">
                                 <i class="fas fas fa-plus-circle"></i> Tambah Surat Peringatan
                             </a>
@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tabel Surat <small>Peringatan</small></h3>
+                            <h3 class="card-title text-center text-color">Tabel Surat <small>Peringatan</small></h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -70,9 +70,9 @@
                                                             Opsi
                                                         </button>
                                                         <div class="dropdown-menu mt-5">
-                                                            <a class="dropdown-item text-dark"
+                                                            <a class="dropdown-item text-success"
                                                                 href="{{ route('dashboard.notice.user', $dt->id_employee) }}">
-                                                                <i class="fas fa-arrow-right"></i> Riwayat Karyawan
+                                                                <i class="fas fa-history"></i> Riwayat Karyawan
                                                             </a>
                                                             <a class="dropdown-item text-dark"
                                                                 href="{{ route('dashboard.notice.prihal', $dt->about) }}">
@@ -175,7 +175,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" id="create-warningletter" name="create-warningletter"
-                            class="btn bg-btn text-dark">Simpan</button>
+                            class="btn bg-btn text-color">Simpan</button>
                     </div>
                 </div>
             </div>

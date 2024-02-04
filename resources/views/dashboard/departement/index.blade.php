@@ -24,7 +24,7 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tambah Data <small>Departemen</small></h3>
+                            <h3 class="card-title text-center text-color">Tambah Data <small>Departemen</small></h3>
                         </div>
 
                         <form id="quickForm" method="POST" action="{{ route('dashboard.departement.store') }}"
@@ -57,7 +57,7 @@
                                 <a href="{{ route('dashboard.departement.index') }}" type="button"
                                     class="btn btn-secondary">Batal</a>
                                 <button type="submit" name="departmentAdd" value="department-add"
-                                    class="btn bg-btn text-dark">Simpan</button>
+                                    class="btn bg-btn text-color">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -66,7 +66,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tabel <small>Departemen</small></h3>
+                            <h3 class="card-title text-center text-color">Tabel <small>Departemen</small></h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

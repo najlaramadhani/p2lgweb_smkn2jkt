@@ -70,7 +70,7 @@
                         <div class="col-sm-4">
                             <div class="small-box bg-department pt-3 pb-3">
                                 <div class="text-center">
-                                    <img src="{{ asset('/dist/img/department.png') }}" height="45px" width="45px"
+                                    <img src="{{ asset('/dist/img/department1.png') }}" height="45px" width="45px"
                                         class="mt-3">
                                 </div>
                                 <div class="inner">

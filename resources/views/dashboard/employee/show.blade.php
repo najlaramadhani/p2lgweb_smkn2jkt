@@ -6,6 +6,7 @@
         .dataTables_empty {
             font-size: 15px !important;
         }
+
     </style>
 
     <div class="content-header">
@@ -28,11 +29,11 @@
             <div class="card card-success card-outline card-outline-tabs card-outline-bottom">
                 <div class="card-header">
                     <ul class="nav nav-tabs employee-tabs mb-3 text-center nav-fill">
-                        <li class="nav-item"><a class="nav-link text-success active" href="#profile" data-target="#profile"
+                        <li class="nav-item"><a class="nav-link text-color active" href="#profile" data-target="#profile"
                                 data-toggle="tab">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link text-success" href="#warning" data-target="#warning"
+                        <li class="nav-item"><a class="nav-link text-color" href="#warning" data-target="#warning"
                                 data-toggle="tab">Surat Peringatan</a></li>
-                        <li class="nav-item"><a class="nav-link text-success" href="#note" data-target="#note"
+                        <li class="nav-item"><a class="nav-link text-color" href="#note" data-target="#score"
                                 data-toggle="tab">Scoring Kinerja</a></li>
                     </ul>
                 </div>
@@ -204,26 +205,23 @@
                             </div>
                         </div>
 
-                        <!-- TAB CATATAN -->
-                        <div class="tab-pane" id="note">
-                            <div class="card">
-                                <div class="card-header card-top">
-                                    <h3 class="card-title text-center">Tabel Scoring <small>Kinerja</small></h3>
-                                </div>
+                         <!-- TAB SC -->
+                        <div class="tab-pane" id="score">
+                            <div class="card card-b card-outline">
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="warningletterTable"
                                             class="warningletter-table table table-bordered table-hover row-12 w-100">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">ID</th>
+                                                   <th scope="col">ID</th>
                                                     <th scope="col">Nama Karyawan</th>
                                                     <th scope="col" class="text-center">Bulan</th>
                                                     <th scope="col" width="16%" class="text-center">Score</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if (count($scores) < 1)
+                                               @if (count($scores) < 1)
                                                     <tr>
                                                         <td colspan="7" class="dataTables_empty">Loading...</td>
                                                     </tr>
@@ -243,6 +241,8 @@
                                 </div>
                             </div>
                         </div>
+
+                     
                     </div>
                 </div>
             </div>

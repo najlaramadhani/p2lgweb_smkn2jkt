@@ -59,7 +59,7 @@ class EmployeeController extends Controller
             'id_jabatan' => 'required',
             'id_status' => 'required',
             'telp' => 'required',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|unique:users,username',
             'address' => 'required',
             'citizen' => 'required',
             'city' => 'required',

@@ -15,16 +15,16 @@
 
     <style type="text/css">
         .bg-login {
-            background-color: #E5F9DB;
+            background-color: #F8FAE5;
         }
 
         .bg-btn {
-            background: #ADE792;
+            background: #265073;
             color: #ffffff;
         }
 
         .card-b.card-outline {
-            border-top: 10px solid #ADE792;
+            border-top: 10px solid #265073;
         }
     </style>
 </head>
@@ -33,10 +33,10 @@
     <div class="login-box">
         <div class="card card-outline card-b">
             <div class="card-header text-center">
-                <img src="{{ asset('/dist/img/EKLogo.png') }}" height="150px" width="150px" alt="RMA Logo">
+                <img src="{{ asset('/dist/img/logo.png') }}" class="img-circle" height="150px" width="150px" alt="RMA Logo">
             </div>
             <div class="card-body pt-2">
-                <p class="login-box-msg" style="padding: 0 20px 15px">LOGIN ACCOUNT PEKINKA</p>
+                <p class="login-box-msg" style="padding: 0 20px 15px">Login Account PEKINKA</p>
                 <form method="POST" action="{{ route('login.handler') }}">
                     @csrf
                     <div class="input-group mb-3">

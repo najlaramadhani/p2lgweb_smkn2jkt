@@ -23,7 +23,7 @@
     <style>
         .card.card-outline-bottom .card-header a.active {
             border-top: 0 !important;
-            border-bottom: 3px solid #28a745;
+            border-bottom: 3px solid #265073;
         }
 
         .card.card-outline-bottom .card-header a:hover {
@@ -32,7 +32,12 @@
         }
 
         .sidebar-light-green {
-            background: #FFF;
+            background: #fff;
+            color: #000000;
+        }
+
+        .navbar-color {
+            background: #265073;
             color: #000000;
         }
 
@@ -102,11 +107,11 @@
         }
 
         .card-b.card-outline {
-            border-top: 5px solid #ADE792;
+            border-top: 5px solid #637A9F;
         }
 
         .bg-btn {
-            background: #ADE792;
+            background: #265073;
             color: #ffffff;
         }
 
@@ -122,7 +127,7 @@
         }
 
         .card-top {
-            background: #ADE792;
+            background: #265073;
         }
 
         .bg-female {
@@ -385,12 +390,15 @@
             font-size: 90%;
             font-weight: 500;
         }
+         .text-color {
+            color: #F8FAE5;
+        }
     </style>
 </head>
 
 <body class="hold-transition sidebar-collapse">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light pt-1 pb-1 fixed-top"
+        <nav class="main-header navbar navbar-expand navbar-color pt-1 pb-1 fixed-top"
             style="z-index: 1039; margin-left: 0;">
             <ul class="navbar-nav">
                 <li class="nav-item" id="isSidebar">
@@ -400,10 +408,10 @@
             </ul>
             <a href="{{ route('dashboard.index') }}" class="brand-link d-flex align-items-center p-0"
                 style="border-bottom:unset">
-                <img src="{{ asset('/dist/img/EKLogo.png') }}" height="40px" width="40px" alt="Enter Komputer Logo"
+                <img src="{{ asset('/dist/img/logo.png') }}" height="40px" width="40px" alt="Enter Komputer Logo"
                     class="ml-1 mr-1 brand-image img-circle">
                 <span class="align-self-center m-0 ml-1"
-                    style="color:#00aa13; font-size:30px;"><strong>PEKINKA</strong></span>
+                    style="color:#F8FAE5; font-size:30px;"><strong>PEKINKA</strong></span>
             </a>
 
             <ul class="navbar-nav ml-auto">
@@ -455,7 +463,7 @@
                 <li class="nav-item dropdown">
                     <div class="user-panel mt-1 pb-1 mb-1 d-flex">
                         <div class="image">
-                            <a href="#"><img src="https://hris.applikasi.cloud/uploads/jml.jpeg"
+                            <a href="#"><img src="{{ asset('/dist/img/profile.png') }}"
                                     class="img-circle elevation-1" alt="Administrator Image"></a>
                         </div>
                     </div>
@@ -471,7 +479,7 @@
                         <li class="nav-header">Dashboard</li>
                         <li class="nav-item">
                             <a href="{{ route('dashboard.index') }}" class="nav-link">
-                                <img src="{{ asset('/dist/img/layouts.png') }}" height="24px" width="24px"
+                                <img src="{{ asset('/dist/img/dashboard.png') }}" height="24px" width="24px"
                                     class="mr-2">
                                 <p>Dashboard</p>
                             </a>
@@ -480,7 +488,7 @@
                             <li class="nav-header">Karyawan</li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <img src="{{ asset('/dist/img/karyawan.png') }}" height="24px" width="24px"
+                                    <img src="{{ asset('/dist/img/employees.png') }}" height="24px" width="24px"
                                         class="mr-2">
                                     <p>Karyawan <i class="fas fa-angle-left right"></i></p>
                                 </a>
@@ -498,7 +506,7 @@
                         <li class="nav-header">Dokumen</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <img src="{{ asset('/dist/img/aplikasi.png') }}" height="24px" width="24px"
+                                <img src="{{ asset('/dist/img/score.png') }}" height="24px" width="24px"
                                     class="mr-2">
                                 <p>Aplikasi <i class="fas fa-angle-left right"></i></p>
                             </a>
@@ -547,7 +555,7 @@
                         <li class="nav-header">Pengaturan</li>
                         <li class="nav-item">
                             <a href="{{ route('dashboard.logout') }}" class="nav-link">
-                                <img src="{{ asset('/dist/img/akun.png') }}" height="24px" width="24px"
+                                <img src="{{ asset('/dist/img/user.png') }}" height="24px" width="24px"
                                     class="mr-2">
                                 <p>Sign Out</p>
                             </a>

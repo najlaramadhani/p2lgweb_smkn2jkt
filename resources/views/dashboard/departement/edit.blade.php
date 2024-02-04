@@ -24,7 +24,7 @@
                 <div class="col-md">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Edit Data <small>Departemen</small></h3>
+                            <h3 class="card-title text-center text-color">Edit Data <small>Departemen</small></h3>
                         </div>
 
                         <form id="quickForm" method="POST" action="{{ route('dashboard.departement.update', $data->id) }}"
@@ -57,7 +57,7 @@
                                 <a href="{{ route('dashboard.departement.index') }}" type="button"
                                     class="btn btn-secondary">Batal</a>
                                 <button type="submit" name="departmentAdd" value="department-add"
-                                    class="btn bg-btn text-dark">Simpan</button>
+                                    class="btn bg-btn text-color">Simpan</button>
                             </div>
                         </form>
                     </div>

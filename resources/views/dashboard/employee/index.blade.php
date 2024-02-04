@@ -6,6 +6,7 @@
         .dataTables_empty {
             font-size: 15px !important;
         }
+        
     </style>
     <div class="content-header">
         <div class="container-fluid">
@@ -14,11 +15,11 @@
                     <div class="d-flex justify-content-between">
                         <h1 class="text-bold">DATA <small>Karyawan</small></h1>
                         <div class="btn float-right" style="height: 50px;">
-                            <button type="button" onclick="table2xls()" class="btn bg-btn btn-sm px-3 py-2 text-dark">
+                            <button type="button" onclick="table2xls()" class="btn bg-btn btn-sm text-color">
                                 <i class="fas fa-file-excel px-2"></i> Export
                             </button>
                             <a href="{{ route('dashboard.employee.create') }}"
-                                class="btn bg-btn btn-sm px-3 py-2 text-dark">
+                                class="btn bg-btn btn-sm text-color">
                                 <i class="fas fa-plus-circle px-2"></i>
                                 <span class="d-none d-md-inline white-space-no-wrap">Tambah Data Karyawan</span>
                             </a>
@@ -35,7 +36,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header card-top">
-                            <h3 class="card-title text-center">Tabel <small>Karyawan</small></h3>
+                            <h3 class="card-title text-center text-color">Tabel <small>Karyawan</small></h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -70,7 +71,7 @@
                                                     <td>{{ $employee->tgl_masuk }}</td>
                                                     <td class="text-center">{{ $employee->department->name }}</td>
                                                     <td class="text-center">
-                                                        <span class="badge bg-transparent text-dark">
+                                                        <span class="badge bg-primary text-dark">
                                                             {{ $employee->status->name }}
                                                         </span>
                                                     </td>
