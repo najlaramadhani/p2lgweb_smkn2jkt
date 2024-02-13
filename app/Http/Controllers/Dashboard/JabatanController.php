@@ -24,6 +24,7 @@ class JabatanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'string|required',
+            'tier' => 'integer|unique:jabatans,tier'
         ]);
 
         if ($validator->fails()) {
@@ -32,7 +33,8 @@ class JabatanController extends Controller
 
         $data = [
             'name' => $request->name,
-            'status' => 1
+            'status' => 1,
+            'tier' => $request->tier
         ];
 
         if (Jabatan::create($data)) {
@@ -67,6 +69,7 @@ class JabatanController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'string|required',
+            'tier' => 'integer'
         ]);
 
         if ($validator->fails()) {
@@ -75,8 +78,17 @@ class JabatanController extends Controller
 
         try {
             $data = Jabatan::find($id);
+            $findTier = Jabatan::where('tier', '=', $request->tier);
+
+            if ($findTier->count() > 0) {
+                if ($findTier->first()->id != $id) {
+                    return back()->with('error', 'The tier has already been taken.');
+                }
+            }
+
             $field = [
                 'name' => $request->name,
+                'tier' => $request->tier
             ];
 
             if ($data->update($field)) {

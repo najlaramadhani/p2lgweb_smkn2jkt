@@ -38,6 +38,13 @@
                                             class="form-control" placeholder="Masukkan Nama Jabatan">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Tier Jabatan :</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="tier" id="tier" value="{{ $data->tier }}"
+                                            class="form-control" placeholder="Masukkan Tier Jabatan">
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-footer text-right">
                                 <a href="{{ route('dashboard.jabatan.index') }}" type="button"

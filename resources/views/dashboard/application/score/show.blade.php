@@ -37,6 +37,7 @@
                                             <th scope="col">Nama Karyawan</th>
                                             <th scope="col" class="text-center">Bulan</th>
                                             <th scope="col" width="16%" class="text-center">Score</th>
+                                            <th scope="col" class="text-center">Penilai</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,6 +52,7 @@
                                                     <td>{{ $dt->employee->fullname }}</td>
                                                     <td class="text-center">{{ $dt->month }}</td>
                                                     <td class="text-center">{{ $dt->score }} / 100</td>
+                                                    <td class="text-center">{{ $dt->createdByUser->fullname }}</td>
                                                 </tr>
                                             @endforeach
                                         @endif

@@ -78,9 +78,15 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 
     Route::prefix('/score')->middleware(['auth'])->group(function () {
         Route::get('/', [ScoreController::class, 'index'])->name('dashboard.score.index');
+        Route::get('/atasan-bawahan', [ScoreController::class, 'different'])->name('dashboard.score.different');
+        Route::get('/rekan-kerja', [ScoreController::class, 'same'])->name('dashboard.score.same');
+
         Route::get('/user/{id}', [ScoreController::class, 'user'])->name('dashboard.score.user');
         Route::get('/month/{slug}', [ScoreController::class, 'month'])->name('dashboard.score.month');
-        Route::post('/store', [ScoreController::class, 'store'])->name('dashboard.score.store');
+
+        Route::post('/diffStore', [ScoreController::class, 'differentStore'])->name('dashboard.score.diffStore');
+        Route::post('/sameStore', [ScoreController::class, 'sameStore'])->name('dashboard.score.sameStore');
+
         Route::get('/del/{id}', [ScoreController::class, 'destroy'])->name('dashboard.score.destroy');
     });
 });

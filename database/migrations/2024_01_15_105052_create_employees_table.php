@@ -29,10 +29,12 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('blood_group')->nullable();
             $table->boolean('married');
+            $table->bigInteger('id_user')->unsigned();
 
             $table->foreign('id_departement')->references('id')->on('departements')->onDelete('cascade');
             $table->foreign('id_jabatan')->references('id')->on('jabatans')->onDelete('cascade');
             $table->foreign('id_status')->references('id')->on('employee_statuses')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

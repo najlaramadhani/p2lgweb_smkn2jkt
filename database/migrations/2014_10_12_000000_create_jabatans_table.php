@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->boolean('status');
+            $table->integer('tier')->unique();
             $table->timestamps();
         });
     }

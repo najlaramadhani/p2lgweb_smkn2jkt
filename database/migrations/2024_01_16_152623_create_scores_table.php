@@ -21,9 +21,11 @@ return new class extends Migration
             $table->bigInteger('id_employee')->unsigned();
             $table->string('month');
             $table->integer('score');
+            $table->bigInteger('created_by')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_employee')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

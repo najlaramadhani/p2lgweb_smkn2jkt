@@ -68,6 +68,7 @@
                                             <th scope="col">Nama Karyawan</th>
                                             <th scope="col" class="text-center">Bulan</th>
                                             <th scope="col" width="16%" class="text-center">Score</th>
+                                            <th scope="col" class="text-center">Penilai</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -83,6 +84,7 @@
                                                     <td>{{ $dt->employee->fullname }}</td>
                                                     <td class="text-center">{{ $dt->month }}</td>
                                                     <td class="text-center">{{ $dt->score }} / 100</td>
+                                                    <td class="text-center">{{ $dt->createdByUser->fullname }}</td>
                                                     <td>
                                                         <button type="button"
                                                             class="btn btn-xs btn-secondary dropdown-toggle"
@@ -124,340 +126,50 @@
         </div>
     </div>
 
-    <form class="modal fade" id="scoring" role="dialog" method="POST" action="{{ route('dashboard.score.store') }}">
-        @csrf
+    <div class="modal fade" id="scoring" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="display:unset">
                     <h4 class="modal-title d-flex justify-content-center" id="warningletterModalLabel">
-                        <b>Tambah Scoring Kinerja</b>
+                        <b>TAMBAH SCORE KINERJA</b>
                     </h4>
                 </div>
                 <div class="modal-body">
                     <div class="addSuratperingatan-notif"></div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Karyawan</label>
+                        <label class="col-sm-3 col-form-label">Jenis Penilaian</label>
                         <div class="col-sm-9">
-                            <select name="id_employee" class="form-control" id="id_employee">
-                                <option value="0" selected="selected">--Pilih--</option>
-                                @foreach ($employees as $key => $employee)
-                                    <option value="{{ $employee->id }}">
-                                         {{ $employee->fullname }} | {{ $employee->jabatan->name }} | {{ $employee->department->name }}
-                                    </option>
-                                @endforeach
+                            <select name="scoring_type" class="form-control" id="scoring_type">
+                                @if (Auth::user()->id_jabatan == 5)
+                                    <option value="1" selected="selected">Sesama Rekan Kerja</option>
+                                @else
+                                    <option value="0" selected="selected">--Pilih--</option>
+                                    <option value="1">Sesama Rekan Kerja</option>
+                                    <option value="2">Terhadap Bawahan</option>
+                                @endif
                             </select>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Bulan</label>
-                        <div class="col-sm-9">
-                            <input type="month" name="month" id="month" class="form-control" />
-                        </div>
-                    </div>
-                    <hr />
-
-                    <div class="form-group">
-                        <div class="table-responsive">
-                            <table id="warningletterTable"
-                                class="warningletter-table table table-bordered table-hover row-12 w-100">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Question</th>
-                                        <th scope="col" class="thead-score">
-                                            Buruk</th>
-                                        <th scope="col" class="thead-score">
-                                            Kurang Baik</th>
-                                        <th scope="col" class="thead-score">
-                                            Cukup</th>
-                                        <th scope="col" class="thead-score">
-                                            Baik
-                                        </th>
-                                        <th scope="col" class="thead-score">
-                                            Sangat Baik</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Seberapa konsisten kehadiran karyawan di tempat kerja selama periode evaluasi
-                                            terakhir?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="one"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="one"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="one"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="one"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="one"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana karyawan mencapai target kinerja yang telah ditetapkan?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="two"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="two"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="two"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="two"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="two"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana karyawan memberikan kontribusi ide kreatif dalam menjalankan
-                                            perkerjaanya?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="three"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="three"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="three"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="three"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="three"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana kemampuan karyawan dalam mengelola waktu dan menyelesaikan
-                                            tugas-tugasnya?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="four"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="four"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="four"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="four"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="four"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana karyawan berkontribusi dalam menciptakan lingkungan kerja yang
-                                            kooperatif?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="five"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="five"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="five"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="five"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="five"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana karyawan dapat beradaptasi dengan perubahan dalam lingkungan kerja?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="six"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="six"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="six"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="six"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="six"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana karyawan bertanggung jawab terhadap pekerjaannya?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="seven"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="seven"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="seven"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="seven"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="seven"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Seberapa efektif komunikasi karyawan dengan rekan kerja dan atasan?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="eight"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="eight"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="eight"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="eight"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="eight"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Seberapa baik karyawan menangani konflik atau situasi sulit dalam tim atau antar
-                                            departemen?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="nine"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="nine"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="nine"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="nine"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="nine"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Sejauh mana karyawan dapat mengaitkan pekerjaannya dengan pencapaian tujuan
-                                            strategis perusahaan?
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="ten"
-                                                value="1" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="ten"
-                                                value="2" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="ten"
-                                                value="3" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="ten"
-                                                value="4" />
-                                        </td>
-                                        <td>
-                                            <input type="radio" class="form-control mx-auto mt-3" name="ten"
-                                                value="5" />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" id="create-warningletter" name="create-warningletter"
-                            class="btn bg-btn text-color">Simpan</button>
+                        <button type="button" id="next-scoring" name="next-scoring"
+                            class="btn bg-btn text-color">Selanjutnya</button>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 @endsection
 
 @section('javascript')
+    <script type="text/javascript">
+        $('#next-scoring').click(function() {
+            const selected = $('#scoring_type').val();
+            if (selected == 1) {
+                window.location.href = '{{ route('dashboard.score.same') }}';
+            } else if (selected == 2) {
+                window.location.href = '{{ route('dashboard.score.different') }}';
+            }
+        });
+    </script>
 @endsection

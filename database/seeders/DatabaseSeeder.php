@@ -19,27 +19,32 @@ class DatabaseSeeder extends Seeder
     {
         Jabatan::create([
             "name" => "Owner",
-            "status" => 1
+            "status" => 1,
+            "tier" => 1
         ]);
 
         Jabatan::create([
             "name" => "Director",
-            "status" => 1
+            "status" => 1,
+            "tier" => 2
         ]);
 
         Jabatan::create([
             "name" => "Manager",
-            "status" => 1
+            "status" => 1,
+            "tier" => 3
         ]);
 
         Jabatan::create([
             "name" => "Supervisor",
-            "status" => 1
+            "status" => 1,
+            "tier" => 4
         ]);
 
         Jabatan::create([
             "name" => "Staff",
-            "status" => 1
+            "status" => 1,
+            "tier" => 5
         ]);
 
         User::create([

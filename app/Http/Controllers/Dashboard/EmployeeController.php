@@ -77,28 +77,6 @@ class EmployeeController extends Controller
             return back()->with('error', 'Email already use.');
         }
 
-        $data = [
-            'nik' => $request->nik,
-            'uid' => $request->uid,
-            'fullname' => $request->fullname,
-            'nickname' => $request->nickname,
-            'place_of_birth' => $request->place_of_birth,
-            'birthdate' => $request->birthdate,
-            'gender' => $request->gender,
-            'religion' => $request->religion,
-            'tgl_masuk' => $request->tgl_masuk,
-            'id_departement' => $request->id_departement,
-            'id_jabatan' => $request->id_jabatan,
-            'id_status' => $request->id_status,
-            'telp' => $request->telp,
-            'email' => $request->email,
-            'address' => $request->address,
-            'citizen' => $request->citizen,
-            'city' => $request->city,
-            'blood_group' => $request->blood_group,
-            'married' => $request->married,
-        ];
-
         try {
             $namaJabatan = Jabatan::find($request->id_jabatan)->name;
 
@@ -111,8 +89,34 @@ class EmployeeController extends Controller
                 "id_jabatan" => $request->id_jabatan
             ];
 
-            if (Employee::create($data) && User::create($dataUser)) {
-                return redirect()->route('dashboard.employee.index')->with('success', 'Create data success.');
+            $user = User::create($dataUser);
+            if ($user) {
+                $data = [
+                    'nik' => $request->nik,
+                    'uid' => $request->uid,
+                    'fullname' => $request->fullname,
+                    'nickname' => $request->nickname,
+                    'place_of_birth' => $request->place_of_birth,
+                    'birthdate' => $request->birthdate,
+                    'gender' => $request->gender,
+                    'religion' => $request->religion,
+                    'tgl_masuk' => $request->tgl_masuk,
+                    'id_departement' => $request->id_departement,
+                    'id_jabatan' => $request->id_jabatan,
+                    'id_status' => $request->id_status,
+                    'telp' => $request->telp,
+                    'email' => $request->email,
+                    'address' => $request->address,
+                    'citizen' => $request->citizen,
+                    'city' => $request->city,
+                    'blood_group' => $request->blood_group,
+                    'married' => $request->married,
+                    'id_user' => $user->id
+                ];
+
+                if (Employee::create($data)) {
+                    return redirect()->route('dashboard.employee.index')->with('success', 'Create data success.');
+                }
             } else {
                 return back()->with('error', 'Something wrong when create data.');
             }
