@@ -29,11 +29,11 @@
             <div class="card card-success card-outline card-outline-tabs card-outline-bottom">
                 <div class="card-header">
                     <ul class="nav nav-tabs employee-tabs mb-3 text-center nav-fill">
-                        <li class="nav-item"><a class="nav-link text-color active" href="#profile" data-target="#profile"
+                        <li class="nav-item"><a class="nav-link text-employee active" href="#profile" data-target="#profile"
                                 data-toggle="tab">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link text-color" href="#warning" data-target="#warning"
+                        <li class="nav-item"><a class="nav-link text-employee" href="#warning" data-target="#warning"
                                 data-toggle="tab">Surat Peringatan</a></li>
-                        <li class="nav-item"><a class="nav-link text-color" href="#note" data-target="#score"
+                        <li class="nav-item"><a class="nav-link text-employee" href="#note" data-target="#score"
                                 data-toggle="tab">Scoring Kinerja</a></li>
                     </ul>
                 </div>

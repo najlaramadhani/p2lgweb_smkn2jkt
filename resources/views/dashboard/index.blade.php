@@ -6,17 +6,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-start">
                         @auth
-                            <h1 class="m-0 text-bold">Selamat Datang, {{ Auth::user()->username }}</h1>
+                            <h1 class="m-0 text-bold">Selamat Datang, {{ Auth::user()->fullname }}</h1>
                         @endauth
-                        <div class="btn float-right" style="height: 50px;">
-                            <a href="#" class="btn btn-danger btn-sm">
-                                <i class="fas fa-bullhorn"></i>
-                                <span class="d-none d-md-inline white-space-no-wrap"
-                                    style="font-family:Source Sans Pro"><b>Pengumuman</b></span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

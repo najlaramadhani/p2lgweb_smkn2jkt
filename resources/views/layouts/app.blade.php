@@ -390,8 +390,12 @@
             font-size: 90%;
             font-weight: 500;
         }
-         .text-color {
+        .text-color {
             color: #F8FAE5;
+        }
+
+        .text-employee {
+            color: #265073;
         }
     </style>
 </head>
@@ -403,7 +407,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item" id="isSidebar">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                            class="fas fa-bars" style="color:#F8FAE5;"></i></a>
                 </li>
             </ul>
             <a href="{{ route('dashboard.index') }}" class="brand-link d-flex align-items-center p-0"
@@ -413,62 +417,6 @@
                 <span class="align-self-center m-0 ml-1"
                     style="color:#F8FAE5; font-size:30px;"><strong>PEKINKA</strong></span>
             </a>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge"><span class="total"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-header"><span class="total"></span> Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> <span class="announcement"></span> new messages
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> <span class="work_permit"></span> izin kerja
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> <span class="request"></span> new request
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <div class="user-panel mt-1 pb-1 mb-1 d-flex">
-                        <div class="image">
-                            <a href="#"><img src="{{ asset('/dist/img/profile.png') }}"
-                                    class="img-circle elevation-1" alt="Administrator Image"></a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
         </nav>
 
         <aside class="main-sidebar sidebar-light-green mt-1">

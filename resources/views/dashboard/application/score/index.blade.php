@@ -40,7 +40,7 @@
                         <h1 class="text-bold">SCORING <small>Kinerja</small></h1>
                         <div class="btn float-right" style="height: 50px;">
                             <a href="" class="btn bg-btn btn-sm text-color" data-toggle="modal"
-                                data-target="#warningletter">
+                                data-target="#scoring">
                                 <i class="fas fas fa-plus-circle"></i> Tambah Scoring Kinerja
                             </a>
                         </div>
@@ -91,6 +91,10 @@
                                                             Opsi
                                                         </button>
                                                         <div class="dropdown-menu mt-5">
+                                                            <a class="dropdown-item text-primary"
+                                                                href="{{ route('dashboard.notice.index') }}">
+                                                                <i class="fas fa-exclamation-circle"></i> Surat Peringatan
+                                                            </a>
                                                             <a class="dropdown-item text-success"
                                                                 href="{{ route('dashboard.score.user', $dt->id_employee) }}">
                                                                 <i class="fas fa-history"></i> Riwayat Karyawan
@@ -120,7 +124,7 @@
         </div>
     </div>
 
-    <form class="modal fade" id="warningletter" role="dialog" method="POST" action="{{ route('dashboard.score.store') }}">
+    <form class="modal fade" id="scoring" role="dialog" method="POST" action="{{ route('dashboard.score.store') }}">
         @csrf
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -138,8 +142,7 @@
                                 <option value="0" selected="selected">--Pilih--</option>
                                 @foreach ($employees as $key => $employee)
                                     <option value="{{ $employee->id }}">
-                                        {{ $employee->jabatan->name }} | {{ $employee->department->name }} |
-                                        {{ $employee->fullname }}
+                                         {{ $employee->fullname }} | {{ $employee->jabatan->name }} | {{ $employee->department->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -448,7 +451,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                         <button type="submit" id="create-warningletter" name="create-warningletter"
-                            class="btn bg-btn text-dark">Simpan</button>
+                            class="btn bg-btn text-color">Simpan</button>
                     </div>
                 </div>
             </div>
