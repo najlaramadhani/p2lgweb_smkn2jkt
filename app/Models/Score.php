@@ -17,6 +17,6 @@ class Score extends Model
 
     public function createdByUser()
     {
-        return $this->belongsTo(Employee::class, 'created_by');
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
