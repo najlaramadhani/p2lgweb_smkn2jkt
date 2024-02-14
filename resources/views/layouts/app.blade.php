@@ -397,6 +397,10 @@
         .text-employee {
             color: #265073;
         }
+        .badge-oren {
+            color: #fff;
+            background-color: #ff914d;
+        }
     </style>
 </head>
 

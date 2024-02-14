@@ -69,6 +69,7 @@
                                             <th scope="col" class="text-center">Bulan</th>
                                             <th scope="col" width="16%" class="text-center">Score</th>
                                             <th scope="col" class="text-center">Penilai</th>
+                                            <th scope="col" class="text-center">Tipe</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -85,6 +86,19 @@
                                                     <td class="text-center">{{ $dt->month }}</td>
                                                     <td class="text-center">{{ $dt->score }} / 100</td>
                                                     <td class="text-center">{{ $dt->createdByUser->fullname }}</td>
+                                                    <td class="text-center">
+                                                            @if ($dt->score <= 50)
+                                                                <span class="badge badge-danger">Buruk</span>
+                                                            @elseif($dt->score <= 60)
+                                                                <span class="badge badge-oren">Kurang Baik</span>
+                                                            @elseif($dt->score <= 70)
+                                                                <span class="badge badge-warning">Cukup</span>
+                                                            @elseif($dt->score <= 80)
+                                                                <span class="badge badge-success">Baik</span>
+                                                            @elseif($dt->score >= 90)
+                                                                <span class="badge badge-primary">Sangat Baik</span>
+                                                            @endif
+                                                    </td>
                                                     <td>
                                                         <button type="button"
                                                             class="btn btn-xs btn-secondary dropdown-toggle"
@@ -93,10 +107,12 @@
                                                             Opsi
                                                         </button>
                                                         <div class="dropdown-menu mt-5">
+                                                             @if ($dt->score <= 70)
                                                             <a class="dropdown-item text-primary"
                                                                 href="{{ route('dashboard.notice.index') }}">
                                                                 <i class="fas fa-exclamation-circle"></i> Surat Peringatan
                                                             </a>
+                                                            @endif
                                                             <a class="dropdown-item text-success"
                                                                 href="{{ route('dashboard.score.user', $dt->id_employee) }}">
                                                                 <i class="fas fa-history"></i> Riwayat Karyawan
